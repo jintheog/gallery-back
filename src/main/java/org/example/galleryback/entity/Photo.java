@@ -28,9 +28,9 @@ public class Photo {
 
 
     @Builder
-    public Photo(String title, String description, String image) {
+    public Photo(String title, String description, String imageUrl) {
         this.title = title;
         this.description = description;
-        this.imageUrl = image;
+        this.imageUrl = imageUrl;
     }
 }
