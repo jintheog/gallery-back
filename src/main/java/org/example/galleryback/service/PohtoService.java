@@ -50,5 +50,6 @@ public class PohtoService {
         Photo photo = photoRepository.findById(id)
                 .orElseThrow(()-> new IllegalArgumentException());
         fileStorageService.delete(photo.getImageUrl());
+        photoRepository.delete(photo);
     }
 }
