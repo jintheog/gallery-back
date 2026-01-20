@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 @Transactional
-public class PohtoService {
+public class PhotoService {
     private final PhotoRepository photoRepository;
     private final FileStorageService fileStorageService;
 

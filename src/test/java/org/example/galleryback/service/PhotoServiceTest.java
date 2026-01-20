@@ -11,12 +11,13 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.mockito.BDDMockito.given;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(MockitoExtension.class)
-public class PhotoService {
+public class PhotoServiceTest {
     @Mock
     private PhotoRepository photoRepository;
 
@@ -39,6 +40,19 @@ public class PhotoService {
         List<PhotoResponse> result = photoService.findAll();
 
         assertThat(result).hasSize(2);
+    }
+
+    @Test
+    @DisplayName("사진 상세 조회")
+    void findById() {
+        Photo photo = createPhoto("test image", "1.jpg");
+        given(photoRepository.findById(1L)).willReturn(Optional.of(photo));
+
+        PhotoResponse result = photoService.findById(1L);
+
+        assertThat(result.getTitle()).isEqualTo("test image");
+        assertThat(result.getImageUrl()).isEqualTo("1.jpg");
+
     }
 
     private Photo createPhoto(String title, String imageUrl) {

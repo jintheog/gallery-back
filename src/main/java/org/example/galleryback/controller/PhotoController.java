@@ -4,7 +4,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.galleryback.dto.PhotoRequest;
 import org.example.galleryback.dto.PhotoResponse;
-import org.example.galleryback.service.PohtoService;
+import org.example.galleryback.service.PhotoService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping("/api/photos")
 @RequiredArgsConstructor
 public class PhotoController {
-    private final PohtoService photoService;
+    private final PhotoService photoService;
 
     @GetMapping
     public List<PhotoResponse> list() {
