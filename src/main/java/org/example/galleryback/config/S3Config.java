@@ -11,7 +11,8 @@ import software.amazon.awssdk.services.s3.S3Client;
 
 
 @Configuration
-@ConditionalOnProperty(name = "cloud.aws.s3.bucket")
+// @ConditionalOnProperty(name = "cloud.aws.s3.bucket")
+@ConditionalOnExpression("!'${cloud.aws.s3.bucket:}'.isEmpty()")
 public class S3Config {
 
     @Value("${cloud.aws.credentials.access-key}")
